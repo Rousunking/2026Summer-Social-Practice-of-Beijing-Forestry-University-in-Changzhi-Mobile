@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>云上党 · 数字地图</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="entry-page">
+  <div class="entry-brand">
+    <img src="主页图片/队徽.png" alt="队徽" class="brand-logo" />
+    <span class="brand-text">北京林业大学数智增绿实践团</span>
+  </div>
+  <main class="entry-shell">
+    <section class="entry-header">
+      <h1>云上党 · <span>数字地图</span></h1>
+    </section>
+    <section class="entry-carousel-container">
+      <button class="carousel-prev" aria-label="上一个"></button>
+      <div class="entry-carousel" id="carousel">
+        <a class="carousel-card" href="map.html">
+          <div class="card-image" style="background-image:url('主页图片/第一图层.png')"></div>
+          <div class="card-content">
+            <div class="card-bg-decoration" style="background-image:url('主页图片/古树背景.jpg')"></div>
+            <h3>古树名木</h3>
+            <p>53 条真实古树名木点位，含详情弹窗与数据大屏</p>
+            <p class="card-desc">展示上党区珍贵古树的分布位置与树龄信息，支持详情查看与导航。</p>
+            <p class="card-desc">数据大屏直观展示古树保护状况与生长趋势，助力古树资源管理。</p>
+          </div>
+        </a>
+        <a class="carousel-card" href="forest.html">
+          <div class="card-image" style="background-image:url('主页图片/第二图层.png')"></div>
+          <div class="card-content">
+            <div class="card-bg-decoration" style="background-image:url('主页图片/林场背景.jpg')"></div>
+            <h3>林场资源</h3>
+            <p>重点林场与防护林分布专题图层</p>
+            <p class="card-desc">呈现上党区国有林场与生态防护林的空间分布，支持区域描绘与编辑。</p>
+            <p class="card-desc">直观展示护林员分布情况，助力林业资源管理与生态保护规划。</p>
+          </div>
+        </a>
+        <a class="carousel-card" href="agri.html">
+          <div class="card-image" style="background-image:url('主页图片/第三图层.jpg')"></div>
+          <div class="card-content">
+            <div class="card-bg-decoration" style="background-image:url('主页图片/美食背景.jpg'); filter: brightness(0.7) contrast(1.2);"></div>
+            <h3>特色饮食</h3>
+            <p>上党区特色美食分布图层</p>
+            <p class="card-desc">收录上党区地道美食如荫城猪汤、驴肉甩饼、十大碗等特色风味。</p>
+            <p class="card-desc">点击查看详细介绍与推荐店铺，品味上党独特饮食文化。</p>
+          </div>
+        </a>
+        <a class="carousel-card" href="tour.html">
+          <div class="card-image" style="background-image:url('主页图片/第四图层.jpg')"></div>
+          <div class="card-content">
+            <div class="card-bg-decoration" style="background-image:url('主页图片/文旅背景.jpg')"></div>
+            <h3>文旅景点</h3>
+            <p>文旅景点与古镇资源专题图层</p>
+            <p class="card-desc">涵盖上党区自然风光与人文古迹，包括古镇、庙宇、山水景观。</p>
+            <p class="card-desc">提供景点详细介绍与游览指引，助您探索上党文化魅力。</p>
+          </div>
+        </a>
+        <a class="carousel-card" href="feiyi.html">
+          <div class="card-image" style="background-image:url('主页图片/第五图层.jpg')"></div>
+          <div class="card-content">
+            <div class="card-bg-decoration" style="background-image:url('主页图片/非遗背景.jpg')"></div>
+            <h3>非遗项目</h3>
+            <p>国家级/省级/市级/区级非遗项目专题图层</p>
+            <p class="card-desc">展示上党区各级非物质文化遗产项目，涵盖传统技艺、民俗活动等。</p>
+            <p class="card-desc">分类展示国家级至区级项目，传承弘扬上党地方文化瑰宝。</p>
+          </div>
+        </a>
+      </div>
+      <button class="carousel-next" aria-label="下一个"></button>
+    </section>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </main>
+  <footer class="entry-footer">
+    <div>北京林业大学数智增绿实践团</div>
+  </footer>
+  <script>
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const cards = carousel.querySelectorAll('.carousel-card');
+    const cardCount = cards.length;
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isAnimating = false;
+
+    cards.forEach((card, index) => {
+      card.style.opacity = index === 0 ? '1' : '0';
+      card.style.transition = 'opacity 0.5s ease';
+    });
+
+    function updateDots(){
+      dotsContainer.innerHTML = '';
+      for(let i = 0; i < cardCount; i++){
+        const dot = document.createElement('span');
+        dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateCardOpacity(){
+      cards.forEach((card, index) => {
+        card.style.opacity = index === currentIndex ? '1' : '0';
+      });
+    }
+
+    function goToSlide(index){
+      if(isAnimating) return;
+      isAnimating = true;
+      
+      cards[currentIndex].style.opacity = '0';
+      
+      setTimeout(() => {
+        currentIndex = index;
+        const translateX = -currentIndex * 100;
+        carousel.style.transform = `translateX(${translateX}%)`;
+        
+        setTimeout(() => {
+          cards[currentIndex].style.opacity = '1';
+          isAnimating = false;
+        }, 100);
+      }, 300);
+      
+      updateDots();
+    }
+
+    function nextSlide(){
+      if(isAnimating) return;
+      currentIndex = (currentIndex + 1) % cardCount;
+      goToSlide(currentIndex);
+    }
+
+    function prevSlide(){
+      if(isAnimating) return;
+      currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+      goToSlide(currentIndex);
+    }
+
+    function startAutoPlay(){
+      stopAutoPlay();
+      autoPlayTimer = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay(){
+      if(autoPlayTimer){
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+    nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    prevBtn.addEventListener('mouseenter', stopAutoPlay);
+    nextBtn.addEventListener('mouseenter', stopAutoPlay);
+    prevBtn.addEventListener('mouseleave', startAutoPlay);
+    nextBtn.addEventListener('mouseleave', startAutoPlay);
+
+    updateDots();
+    startAutoPlay();
+  </script>
+  <script src="page-enter.js"></script>
+</body>
+</html>

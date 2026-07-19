@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>云上党 · 特色饮食专题地图</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="map-page">
+  <main class="shell">
+    <header class="topbar">
+      <div class="header-bg">
+        <img src="饮食/41f218fa6f3896c183f64dfd466b2103.jpg" alt="饮食背景" />
+      </div>
+      <div class="brand">
+        <h1>云上党 · 特色饮食专题地图</h1>
+        <p>以高德地图为底图，展示上党区特色美食分布与详情。</p>
+      </div>
+      <nav class="nav">
+        <a href="index.html">返回首页</a>
+        <a class="primary" href="food_dashboard.html">数据大屏</a>
+      </nav>
+    </header>
+    <section class="grid">
+      <aside class="panel sidebar sidebar-bg-food">
+        <input id="search" class="search" placeholder="搜索美食名称" />
+        <button id="backBtn" class="back-btn" style="display:none">← 返回乡镇列表</button>
+        <div id="townList" class="list"></div>
+        <div id="foodList" class="list" style="display:none"></div>
+      </aside>
+      <section class="panel map-wrap">
+        <div id="map"></div>
+        <div id="fallbackMap" class="fallback-map">
+          <div class="fallback-region"></div>
+          <div id="fallbackPopup" class="fallback-popup"></div>
+        </div>
+        <div id="status" class="status">特色饮食专题图层展示中</div>
+        <button id="centerBtn" class="center-btn">居中上党区</button>
+      </section>
+    </section>
+  </main>
+  <script src="config.js?v=20260702"></script>
+  <script src="food_data.js"></script>
+  <script src="food_map.js"></script>
+  <script src="page-enter.js"></script>
+</body>
+</html>
