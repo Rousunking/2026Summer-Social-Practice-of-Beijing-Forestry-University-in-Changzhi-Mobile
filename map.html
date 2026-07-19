@@ -2,62 +2,44 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>云上党 · 古树名木</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260719c" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>云上党 · 数字地图</title>
+  <link rel="stylesheet" href="styles.css?v=20260719c" />
 </head>
 <body class="map-page">
-  <div class="map-shell">
-    <!-- 顶部搜索栏 -->
-    <div class="map-topbar">
-      <a href="index.html" class="btn-icon" style="background:#668678;font-size:14px;">&larr;</a>
-      <input id="search" class="search-input" placeholder="搜索编号、树种、乡镇..." />
-      <button id="centerBtn" class="btn-icon" title="居中上党区">&#9678;</button>
-    </div>
-
-    <!-- 地图 -->
-    <div class="map-container">
-      <div id="map"></div>
-      <div id="fallbackMap" class="fallback-map">
-        <div class="fallback-region"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="header-bg">
+        <img src="图层插图/古树.jpg" alt="古树背景" />
       </div>
-      <div id="status" class="map-status" style="display:none"></div>
-    </div>
-
-    <!-- 底部抽屉 -->
-    <div id="bottomSheet" class="bottom-sheet">
-      <div class="sheet-handle"></div>
-      <div class="sheet-header">
-        <h2>古树名木</h2>
-        <span id="countLabel" class="count">53 条</span>
+      <div class="brand">
+        <h1>云上党 · 古树名木数字地图</h1>
+        <p>以高德地图为底图，联动古树名木点位详情与生态数据大屏。</p>
       </div>
-      <div class="sheet-body">
-        <div id="listView">
-          <div id="pointList"></div>
+      <nav class="nav">
+        <a href="index.html">返回首页</a>
+        <a class="primary" id="dashLink" href="数据大屏.html">进入数据大屏</a>
+      </nav>
+    </header>
+    <section class="grid">
+      <aside class="panel sidebar sidebar-bg-tree">
+        <input id="search" class="search" placeholder="搜索编号、树种、乡镇、村名" />
+        <div id="pointList" class="list"></div>
+      </aside>
+      <section class="panel map-wrap">
+        <div id="map"></div>
+        <div id="fallbackMap" class="fallback-map">
+          <div class="fallback-region"></div>
+          <div id="fallbackPopup" class="fallback-popup"></div>
         </div>
-        <div id="detailView" class="detail-view" style="display:none"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 底部导航栏 -->
-  <nav class="tab-bar">
-    <a href="index.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      首页
-    </a>
-    <a href="map.html" class="active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-      地图
-    </a>
-    <a href="数据大屏.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      大屏
-    </a>
-  </nav>
-
+        <div id="status" class="status"></div>
+        <button id="centerBtn" class="center-btn">居中上党区</button>
+      </section>
+    </section>
+  </main>
   <script src="config.js?v=20260719c"></script>
   <script src="data.js?v=20260719c"></script>
-  <script src="js/app.js?v=20260719c"></script>
+  <script src="app.js?v=20260719c"></script>
+  <script src="page-enter.js?v=20260719c"></script>
 </body>
 </html>
