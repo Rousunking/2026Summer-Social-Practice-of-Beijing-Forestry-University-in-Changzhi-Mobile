@@ -2,49 +2,83 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>云上党 · 古树名木数据大屏</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>云上党 · 数据大屏</title>
+  <link rel="stylesheet" href="css/styles.css?v=20260719a" />
 </head>
-<body>
-  <main class="dash-grid">
-    <header class="topbar">
-      <div class="brand">
-        <h1>云上党 · 古树名木数据大屏</h1>
-        <p>总览区域古树资源态势，并与地图点位联动展示单点详情。</p>
+<body class="dash-page">
+  <div class="dash-topbar">
+    <h1>古树名木数据大屏</h1>
+    <a href="map.html">返回地图</a>
+  </div>
+
+  <div class="dash-content">
+    <div id="kpis" class="dash-kpis"></div>
+
+    <div class="dash-card">
+      <h2>乡镇古树数量排行</h2>
+      <div id="townBars" class="m-bar-list"></div>
+    </div>
+
+    <div class="dash-card">
+      <h2>树种分布</h2>
+      <div id="speciesBars" class="m-bar-list"></div>
+    </div>
+
+    <div class="dash-card">
+      <h2>等级与生长势</h2>
+      <div class="m-donuts">
+        <div class="m-donut-card">
+          <div id="gradeDonut" class="m-donut"></div>
+          <div id="gradeLegend" class="m-legend"></div>
+        </div>
+        <div class="m-donut-card">
+          <div id="growthDonut" class="m-donut"></div>
+          <div id="growthLegend" class="m-legend"></div>
+        </div>
       </div>
-      <nav class="nav">
-        <a href="index.html">返回首页</a>
-        <a class="primary" id="backMap" href="map.html">返回地图</a>
-      </nav>
-    </header>
-    <section class="kpis" id="kpis"></section>
-    <section class="dash-layout">
-      <div class="col">
-        <section class="card"><h2>乡镇古树数量排行</h2><div class="bar-list" id="townBars"></div></section>
-        <section class="card"><h2>树种分布</h2><div class="bar-list" id="speciesBars"></div></section>
-      </div>
-      <div class="col">
-        <section class="card detail-card" id="detailCard"><h2>当前点位详情</h2><select class="dash-select" id="pointSelect"></select><div id="detailContent"></div></section>
-        <section class="card"><h2>点位分布示意</h2><div class="mini-map" id="miniMap"></div></section>
-      </div>
-      <div class="col">
-        <section class="card">
-          <h2>等级与生长势</h2>
-          <div class="donuts">
-            <div class="donut-card"><div class="donut" id="gradeDonut"></div><div class="legend" id="gradeLegend"></div></div>
-            <div class="donut-card"><div class="donut" id="growthDonut"></div><div class="legend" id="growthLegend"></div></div>
-          </div>
-        </section>
-        <section class="card"><h2>生长环境</h2><div class="bar-list" id="envBars"></div></section>
-        <section class="card"><h2>权属分布</h2><div class="bar-list" id="ownershipBars"></div></section>
-      </div>
-    </section>
-    <footer class="footer"><span>数据来源：上党区古树名木.xlsx</span><span>联动字段：古树名木编号 id</span></footer>
-  </main>
-  <script src="data.js"></script>
-  <script src="dashboard.js"></script>
-  <script src="page-enter.js"></script>
-  <script src="dash-align.js"></script>
+    </div>
+
+    <div class="dash-card">
+      <h2>生长环境</h2>
+      <div id="envBars" class="m-bar-list"></div>
+    </div>
+
+    <div class="dash-card">
+      <h2>权属分布</h2>
+      <div id="ownershipBars" class="m-bar-list"></div>
+    </div>
+
+    <div id="detailCard" class="dash-card dash-detail"></div>
+
+    <div class="dash-card">
+      <h2>点位分布示意</h2>
+      <div id="miniMap" class="mini-map"></div>
+    </div>
+
+    <div class="dash-footer">
+      <span>数据来源：上党区古树名木.xlsx</span>
+      <span>北京林业大学数智增绿实践团</span>
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      首页
+    </a>
+    <a href="map.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      地图
+    </a>
+    <a href="数据大屏.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      大屏
+    </a>
+  </nav>
+
+  <script src="config.js?v=20260719a"></script>
+  <script src="data.js?v=20260719a"></script>
+  <script src="js/dashboard.js?v=20260719a"></script>
 </body>
 </html>

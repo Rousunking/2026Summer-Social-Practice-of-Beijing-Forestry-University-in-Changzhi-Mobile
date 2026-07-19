@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>云上党 · 林场资源专题地图</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260719a" />
   <style>
     .draw-btn {
       position: absolute;
@@ -365,6 +365,9 @@
       margin-top: 8px !important;
     }
   </style>
+  <style>
+@media(max-width:720px){body{font-size:14px}.topbar h1{font-size:16px}.sidebar{max-height:35vh}.map-wrap{min-height:50vh}}
+  </style>
 </head>
 <body class="map-page">
   <main class="shell">
@@ -512,8 +515,8 @@
       </section>
     </section>
   </main>
-  <script src="config.js?v=20260702"></script>
-  <script src="data.js?v=20260702"></script>
+  <script src="config.js?v=20260719a"></script>
+  <script src="data.js?v=20260719a"></script>
   <script>
     const FOREST_DATA = [
       {
@@ -1276,6 +1279,6 @@
       }
     }
   </script>
-  <script src="page-enter.js"></script>
+  <script src="page-enter.js?v=20260719a"></script>
 </body>
 </html>
