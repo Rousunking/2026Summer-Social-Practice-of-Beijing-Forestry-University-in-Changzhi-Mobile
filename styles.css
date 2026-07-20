@@ -775,25 +775,42 @@ body.entry-page {
 }
 /* ============ 手机端全面适配 (≤768px) ============ */
 @media (max-width: 768px) {
-  /* 入口页 - 队徽融入文档流，不再重叠 */
+  /* 入口页 - 标题恢复显示在顶部，队徽在其下方 */
+  body.entry-page {
+    padding-top: 48px;
+    background-attachment: scroll;
+  }
+  .entry-header {
+    position: absolute;
+    top: 10px;
+    left: 0; right: 0;
+    text-align: center;
+    margin-bottom: 0;
+    z-index: 10;
+  }
+  .entry-header h1 {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 26px;
+    margin: 0;
+    line-height: 1.2;
+  }
   .entry-brand {
     position: static;
     display: flex; align-items: center; justify-content: center;
     gap: 8px; opacity: 1;
-    padding: 20px 16px 0;
+    padding: 8px 16px 0;
     width: 100%;
   }
   .entry-brand .brand-logo {
-    width: 40px; height: 40px;
+    width: 36px; height: 36px;
   }
   .entry-brand .brand-text {
-    font-size: 14px;
+    font-size: 13px;
   }
   .entry-shell {
-    padding: 12px 0 20px;
+    padding: 4px 0 20px;
     width: 96vw;
   }
-  .entry-header { display: none; }
   .entry-carousel-container { border-radius: 12px; }
   .carousel-card {
     flex-direction: column;
@@ -810,9 +827,6 @@ body.entry-page {
   }
   .carousel-prev { left: 2px; }
   .carousel-next { right: 2px; }
-  body.entry-page {
-    background-attachment: scroll;
-  }
 
   /* 地图页整体布局 */
   body.map-page { overflow: hidden; }
