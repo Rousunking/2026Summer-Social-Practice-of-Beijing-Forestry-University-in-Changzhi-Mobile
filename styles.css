@@ -775,24 +775,22 @@ body.entry-page {
 }
 /* ============ 手机端全面适配 (≤768px) ============ */
 @media (max-width: 768px) {
-  /* 入口页 - 标题恢复显示在顶部，队徽在其下方 */
+  /* 入口页 - 标题、队徽、内容从上到下自然排列 */
   body.entry-page {
-    padding-top: 48px;
+    padding-top: 12px;
     background-attachment: scroll;
   }
   .entry-header {
-    position: absolute;
-    top: 10px;
-    left: 0; right: 0;
     text-align: center;
-    margin-bottom: 0;
-    z-index: 10;
+    margin: 0 0 4px;
+    padding: 0 16px;
+    width: 100%;
   }
   .entry-header h1 {
     font-family: 'Ma Shan Zheng', cursive;
-    font-size: 26px;
+    font-size: 28px;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.3;
   }
   .entry-brand {
     position: static;
@@ -808,7 +806,7 @@ body.entry-page {
     font-size: 13px;
   }
   .entry-shell {
-    padding: 4px 0 20px;
+    padding: 8px 0 20px;
     width: 96vw;
   }
   .entry-carousel-container { border-radius: 12px; }
